@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.masmoudi.vache_taureau.MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_row="0"
+                android:layout_column="0"
+                android:layout_rowWeight="10">
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_row="0"
+                    android:layout_column="0"
+                    android:layout_rowWeight="1">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:autoSizeTextType="uniform"
+                        android:background="@color/answer"
+                        android:gravity="center"
+                        android:text="VVVV" />
+                </GridLayout>
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_row="1"
+                    android:layout_column="0"
+                    android:layout_rowWeight="1">
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_column="1"
+                        android:layout_columnWeight="2"
+                        android:layout_gravity="fill"
+                        android:layout_row="0"
+                        android:layout_rowSpan="2"
+                        android:autoSizeTextType="uniform"
+                        android:background="@color/tile1"
+                        android:gravity="center"
+                        android:onClick="buttonClicked"
+                        android:text="T" />
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_column="2"
+                        android:layout_columnWeight="2"
+                        android:layout_gravity="fill"
+                        android:layout_row="0"
+                        android:layout_rowSpan="2"
+                        android:autoSizeTextType="uniform"
+                        android:background="@color/tile1"
+                        android:gravity="center"
+                        android:onClick="buttonClicked"
+                        android:text="T" />
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_column="3"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill"
+                        android:layout_row="0"
+                        android:layout_rowWeight="1"
+                        android:background="@color/tile5"
+                        android:gravity="center"
+                        android:onClick="buttonClicked"
+                        android:text="&lt;&lt;" />
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_column="3"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill"
+                        android:layout_row="1"
+                        android:layout_rowWeight="1"
+                        android:background="@color/tile5"
+                        android:gravity="center"
+                        android:onClick="buttonClicked"
+                        android:text="OK" />
+
+
+                </GridLayout>
+            </GridLayout>
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_column="0"
+                android:layout_row="1"
+                android:layout_rowWeight="1"
+                android:background="@color/separator">
+
+            </GridLayout>
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_row="2"
+                android:layout_column="0"
+                android:layout_rowWeight="10">
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_row="0"
+                    android:layout_column="0"
+                    android:layout_rowWeight="1">
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:background="@color/answer"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:gravity="center"
+                        android:autoSizeTextType="uniform"
+                        android:text="1023"/>
+                </GridLayout>
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_row="1"
+                    android:layout_column="0"
+                    android:layout_rowWeight="1">
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/textView4"-->
+                        <!--android:layout_column="0"-->
+                        <!--android:layout_columnWeight="1"-->
+                        <!--android:layout_row="0"-->
+                        <!--android:layout_rowWeight="1"-->
+                        <!--android:layout_gravity="fill"-->
+                        <!--android:autoSizeTextType="uniform"-->
+                        <!--android:background="@color/tile1"-->
+                        <!--android:gravity="center"-->
+                        <!--android:onClick="buttonClicked"-->
+                        <!--android:text="0" />-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/textView4"-->
+                        <!--android:layout_column="1"-->
+                        <!--android:layout_columnWeight="1"-->
+                        <!--android:layout_row="0"-->
+                        <!--android:layout_rowWeight="1"-->
+                        <!--android:layout_gravity="fill"-->
+                        <!--android:autoSizeTextType="uniform"-->
+                        <!--android:background="@color/tile2"-->
+                        <!--android:gravity="center"-->
+                        <!--android:onClick="buttonClicked"-->
+                        <!--android:text="1" />-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/textView4"-->
+                        <!--android:layout_column="2"-->
+                        <!--android:layout_columnWeight="1"-->
+                        <!--android:layout_row="0"-->
+                        <!--android:layout_rowWeight="1"-->
+                        <!--android:layout_gravity="fill"-->
+                        <!--android:autoSizeTextType="uniform"-->
+                        <!--android:background="@color/tile1"-->
+                        <!--android:gravity="center"-->
+                        <!--android:onClick="buttonClicked"-->
+                        <!--android:text="2" />-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/textView4"-->
+                        <!--android:layout_column="3"-->
+                        <!--android:layout_columnWeight="1"-->
+                        <!--android:layout_row="0"-->
+                        <!--android:layout_rowWeight="1"-->
+                        <!--android:layout_gravity="fill"-->
+                        <!--android:autoSizeTextType="uniform"-->
+                        <!--android:background="@color/tile2"-->
+                        <!--android:gravity="center"-->
+                        <!--android:onClick="buttonClicked"-->
+                        <!--android:text="3" />-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/textView4"-->
+                        <!--android:layout_column="4"-->
+                        <!--android:layout_columnWeight="1"-->
+                        <!--android:layout_row="0"-->
+                        <!--android:layout_rowWeight="1"-->
+                        <!--android:layout_gravity="fill"-->
+                        <!--android:autoSizeTextType="uniform"-->
+                        <!--android:background="@color/tile1"-->
+                        <!--android:gravity="center"-->
+                        <!--android:onClick="buttonClicked"-->
+                        <!--android:text="4" />-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/textView4"-->
+                        <!--android:layout_column="5"-->
+                        <!--android:layout_columnWeight="1"-->
+                        <!--android:layout_row="0"-->
+                        <!--android:layout_rowWeight="1"-->
+                        <!--android:layout_gravity="fill"-->
+                        <!--android:background="@color/tile5"-->
+                        <!--android:gravity="center"-->
+                        <!--android:onClick="buttonClicked"-->
+                        <!--android:text="&lt;&lt;" />-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/textView4"-->
+                        <!--android:layout_column="0"-->
+                        <!--android:layout_columnWeight="1"-->
+                        <!--android:layout_row="1"-->
+                        <!--android:layout_rowWeight="1"-->
+                        <!--android:layout_gravity="fill"-->
+                        <!--android:autoSizeTextType="uniform"-->
+                        <!--android:background="@color/tile2"-->
+                        <!--android:gravity="center"-->
+                        <!--android:onClick="buttonClicked"-->
+                        <!--android:text="5" />-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/textView4"-->
+                        <!--android:layout_column="1"-->
+                        <!--android:layout_columnWeight="1"-->
+                        <!--android:layout_row="1"-->
+                        <!--android:layout_rowWeight="1"-->
+                        <!--android:layout_gravity="fill"-->
+                        <!--android:autoSizeTextType="uniform"-->
+                        <!--android:background="@color/tile1"-->
+                        <!--android:gravity="center"-->
+                        <!--android:onClick="buttonClicked"-->
+                        <!--android:text="6" />-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/textView4"-->
+                        <!--android:layout_column="2"-->
+                        <!--android:layout_columnWeight="1"-->
+                        <!--android:layout_row="1"-->
+                        <!--android:layout_rowWeight="1"-->
+                        <!--android:layout_gravity="fill"-->
+                        <!--android:autoSizeTextType="uniform"-->
+                        <!--android:background="@color/tile2"-->
+                        <!--android:gravity="center"-->
+                        <!--android:onClick="buttonClicked"-->
+                        <!--android:text="7" />-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/textView4"-->
+                        <!--android:layout_column="3"-->
+                        <!--android:layout_columnWeight="1"-->
+                        <!--android:layout_row="1"-->
+                        <!--android:layout_rowWeight="1"-->
+                        <!--android:layout_gravity="fill"-->
+                        <!--android:autoSizeTextType="uniform"-->
+                        <!--android:background="@color/tile1"-->
+                        <!--android:gravity="center"-->
+                        <!--android:onClick="buttonClicked"-->
+                        <!--android:text="8" />-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/textView4"-->
+                        <!--android:layout_column="4"-->
+                        <!--android:layout_columnWeight="1"-->
+                        <!--android:layout_row="1"-->
+                        <!--android:layout_rowWeight="1"-->
+                        <!--android:layout_gravity="fill"-->
+                        <!--android:autoSizeTextType="uniform"-->
+                        <!--android:background="@color/tile2"-->
+                        <!--android:gravity="center"-->
+                        <!--android:onClick="buttonClicked"-->
+                        <!--android:text="9" />-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/textView4"-->
+                        <!--android:layout_column="5"-->
+                        <!--android:layout_columnWeight="1"-->
+                        <!--android:layout_row="1"-->
+                        <!--android:layout_rowWeight="1"-->
+                        <!--android:layout_gravity="fill"-->
+                        <!--android:background="@color/tile5"-->
+                        <!--android:gravity="center"-->
+                        <!--android:onClick="buttonClicked"-->
+                        <!--android:text="OK" />-->
+
+
+                    <Button
+                        android:id="@+id/button"
+                        android:layout_row="0"
+                        android:layout_column="0"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill"
+                        android:autoSizeTextType="uniform"
+                        android:background="@color/tile1"
+                        android:text="0" />
+                    <Button
+                        android:id="@+id/button"
+                        android:layout_row="0"
+                        android:layout_column="1"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill"
+                        android:autoSizeTextType="uniform"
+                        android:background="@color/tile2"
+                        android:text="1" />
+                    <Button
+                        android:id="@+id/button"
+                        android:layout_row="0"
+                        android:layout_column="2"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill"
+                        android:autoSizeTextType="uniform"
+                        android:background="@color/tile1"
+                        android:text="2" />
+                    <Button
+                        android:id="@+id/button"
+                        android:layout_row="0"
+                        android:layout_column="3"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill"
+                        android:autoSizeTextType="uniform"
+                        android:background="@color/tile2"
+                        android:text="3" />
+                    <Button
+                        android:id="@+id/button"
+                        android:layout_row="0"
+                        android:layout_column="4"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill"
+                        android:autoSizeTextType="uniform"
+                        android:background="@color/tile1"
+                        android:text="4" />
+                    <Button
+                        android:id="@+id/button"
+                        android:layout_row="0"
+                        android:layout_column="5"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill"
+                        android:background="@color/tile5"
+                        android:text="&lt;&lt;" />
+                    <Button
+                        android:id="@+id/button"
+                        android:layout_row="1"
+                        android:layout_column="0"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill"
+                        android:autoSizeTextType="uniform"
+                        android:background="@color/tile2"
+                        android:text="5" />
+                    <Button
+                        android:id="@+id/button"
+                        android:layout_row="1"
+                        android:layout_column="1"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill"
+                        android:autoSizeTextType="uniform"
+                        android:background="@color/tile1"
+                        android:text="6" />
+                    <Button
+                        android:id="@+id/button"
+                        android:layout_row="1"
+                        android:layout_column="2"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill"
+                        android:autoSizeTextType="uniform"
+                        android:background="@color/tile2"
+                        android:text="7" />
+                    <Button
+                        android:id="@+id/button"
+                        android:layout_row="1"
+                        android:layout_column="3"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill"
+                        android:autoSizeTextType="uniform"
+                        android:background="@color/tile1"
+                        android:text="8" />
+                    <Button
+                        android:id="@+id/button"
+                        android:layout_row="1"
+                        android:layout_column="4"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill"
+                        android:autoSizeTextType="uniform"
+                        android:background="@color/tile2"
+                        android:text="9" />
+                    <Button
+                        android:id="@+id/button"
+                        android:layout_row="1"
+                        android:layout_column="5"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill"
+                        android:background="@color/tile5"
+                        android:text="OK" />
+
+                </GridLayout>
+            </GridLayout>
+        </GridLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>
