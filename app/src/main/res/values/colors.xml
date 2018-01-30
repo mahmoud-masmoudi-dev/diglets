@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="answer">#FFD765</color>
-    <color name="separator">#E8915C</color>
-    <color name="tile1">#FFDC97</color>
-    <color name="tile2">#E8BE89</color>
-    <color name="tile3">#FFC9A3</color>
-    <color name="tile4">#E8A289</color>
-    <color name="tile5">#FFA397</color>
+    <color name="text">#243540</color>
+    <color name="separator">#243540</color>
+    <color name="tile1">#8FD2FF</color>
+    <color name="tile2">#6B9EBF</color>
+    <color name="backspace">#48697F</color>
+    <color name="ok">#48697F</color>
 </resources>
