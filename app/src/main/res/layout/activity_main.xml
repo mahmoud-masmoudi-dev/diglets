@@ -23,6 +23,7 @@
                 android:layout_rowWeight="10">
 
                 <TextView
+                    android:id="@+id/answerLettersEditText"
                     android:layout_column="0"
                     android:layout_columnSpan="6"
                     android:layout_columnWeight="1"
@@ -44,7 +45,6 @@
                     android:layout_row="1"
                     android:layout_rowWeight="1"
                     android:autoSizeTextType="uniform"
-                    android:background="@color/tile1"
                     android:gravity="center"/>
 
                 <TextView
@@ -55,13 +55,11 @@
                     android:layout_row="2"
                     android:layout_rowWeight="1"
                     android:autoSizeTextType="uniform"
-                    android:background="@color/tile1"
                     android:gravity="center"/>
 
                 <TextView
                     android:layout_column="1"
-                    android:layout_columnSpan="4"
-                    android:layout_columnWeight="1"
+                    android:layout_columnWeight="4"
                     android:layout_gravity="fill"
                     android:layout_margin="@dimen/button_margin"
                     android:layout_row="1"
@@ -73,8 +71,7 @@
 
                 <TextView
                     android:layout_column="1"
-                    android:layout_columnSpan="4"
-                    android:layout_columnWeight="1"
+                    android:layout_columnWeight="4"
                     android:layout_margin="@dimen/button_margin"
                     android:layout_row="2"
                     android:layout_rowWeight="1"
@@ -84,6 +81,7 @@
                     android:text="V" />
 
                 <TextView
+                    android:id="@+id/buttonBackspaceLetters"
                     android:layout_column="5"
                     android:layout_columnSpan="1"
                     android:layout_columnWeight="1"
@@ -91,20 +89,21 @@
                     android:layout_margin="@dimen/button_margin"
                     android:layout_row="1"
                     android:layout_rowWeight="1"
-                    android:autoSizeTextType="uniform"
-                    android:background="@color/tile1"
-                    android:gravity="center"/>
+                    android:background="@color/backspace"
+                    android:gravity="center"
+                    android:text="&lt;&lt;" />
 
                 <TextView
+                    android:id="@+id/buttonOkLetters"
                     android:layout_column="5"
                     android:layout_columnSpan="1"
                     android:layout_columnWeight="1"
                     android:layout_margin="@dimen/button_margin"
                     android:layout_row="2"
                     android:layout_rowWeight="1"
-                    android:autoSizeTextType="uniform"
-                    android:background="@color/tile1"
-                    android:gravity="center"/>
+                    android:background="@color/ok"
+                    android:gravity="center"
+                    android:text="OK" />
 
             </GridLayout>
 
@@ -125,6 +124,7 @@
                 android:layout_rowWeight="10">
 
                 <TextView
+                    android:id="@+id/answerDigitsEditText"
                     android:layout_column="0"
                     android:layout_columnSpan="6"
                     android:layout_columnWeight="1"
@@ -250,6 +250,7 @@
                     android:text="9" />
 
                 <TextView
+                    android:id="@+id/backspaceDigits"
                     android:layout_column="5"
                     android:layout_columnWeight="1"
                     android:layout_margin="@dimen/button_margin"
@@ -260,6 +261,7 @@
                     android:text="&lt;&lt;" />
 
                 <TextView
+                    android:id="@+id/okDigits"
                     android:layout_column="5"
                     android:layout_columnWeight="1"
                     android:layout_margin="@dimen/button_margin"

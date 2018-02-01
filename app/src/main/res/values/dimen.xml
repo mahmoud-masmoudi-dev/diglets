@@ -3,5 +3,5 @@
 <resources>
     <dimen name="button_margin">5dp</dimen>
     <dimen name="text_margin">10dp</dimen>
-    <dimen name="separator_margin">10dp</dimen>
+    <dimen name="separator_margin">5dp</dimen>
 </resources>
