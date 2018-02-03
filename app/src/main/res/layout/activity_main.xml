@@ -23,7 +23,7 @@
                 android:layout_rowWeight="10">
 
                 <TextView
-                    android:id="@+id/answerLettersEditText"
+                    android:id="@+id/lettersAnswer"
                     android:layout_column="0"
                     android:layout_columnSpan="6"
                     android:layout_columnWeight="1"
@@ -31,7 +31,6 @@
                     android:layout_margin="@dimen/text_margin"
                     android:layout_row="0"
                     android:layout_rowWeight="2"
-                    android:autoSizeTextType="uniform"
                     android:background="@color/text"
                     android:gravity="center"
                     android:text="VVVV" />
@@ -60,13 +59,13 @@
                 <TextView
                     android:layout_column="1"
                     android:layout_columnWeight="4"
-                    android:layout_gravity="fill"
                     android:layout_margin="@dimen/button_margin"
                     android:layout_row="1"
                     android:layout_rowWeight="1"
                     android:autoSizeTextType="uniform"
                     android:background="@color/tile1"
                     android:gravity="center"
+                    android:onClick="letterClicked"
                     android:text="T" />
 
                 <TextView
@@ -78,23 +77,24 @@
                     android:autoSizeTextType="uniform"
                     android:background="@color/tile1"
                     android:gravity="center"
+                    android:onClick="letterClicked"
                     android:text="V" />
 
                 <TextView
-                    android:id="@+id/buttonBackspaceLetters"
+                    android:id="@+id/lettersBackspace"
                     android:layout_column="5"
                     android:layout_columnSpan="1"
                     android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
                     android:layout_margin="@dimen/button_margin"
                     android:layout_row="1"
                     android:layout_rowWeight="1"
                     android:background="@color/backspace"
                     android:gravity="center"
+                    android:onClick="lettersBackspaceClicked"
                     android:text="&lt;&lt;" />
 
                 <TextView
-                    android:id="@+id/buttonOkLetters"
+                    android:id="@+id/lettersOk"
                     android:layout_column="5"
                     android:layout_columnSpan="1"
                     android:layout_columnWeight="1"
@@ -103,6 +103,7 @@
                     android:layout_rowWeight="1"
                     android:background="@color/ok"
                     android:gravity="center"
+                    android:onClick="lettersOkClicked"
                     android:text="OK" />
 
             </GridLayout>
@@ -124,7 +125,7 @@
                 android:layout_rowWeight="10">
 
                 <TextView
-                    android:id="@+id/answerDigitsEditText"
+                    android:id="@+id/digitsAnswer"
                     android:layout_column="0"
                     android:layout_columnSpan="6"
                     android:layout_columnWeight="1"
@@ -132,22 +133,20 @@
                     android:layout_margin="@dimen/text_margin"
                     android:layout_row="0"
                     android:layout_rowWeight="2"
-                    android:autoSizeTextType="uniform"
                     android:background="@color/text"
                     android:gravity="center"
                     android:text="1234" />
 
                 <TextView
                     android:layout_column="0"
-                    android:layout_columnSpan="1"
                     android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
                     android:layout_margin="@dimen/button_margin"
                     android:layout_row="1"
                     android:layout_rowWeight="1"
                     android:autoSizeTextType="uniform"
                     android:background="@color/tile1"
                     android:gravity="center"
+                    android:onClick="digitClicked"
                     android:text="0" />
 
                 <TextView
@@ -159,6 +158,7 @@
                     android:autoSizeTextType="uniform"
                     android:background="@color/tile2"
                     android:gravity="center"
+                    android:onClick="digitClicked"
                     android:text="5" />
 
                 <TextView
@@ -170,6 +170,7 @@
                     android:autoSizeTextType="uniform"
                     android:background="@color/tile2"
                     android:gravity="center"
+                    android:onClick="digitClicked"
                     android:text="1" />
 
                 <TextView
@@ -181,6 +182,7 @@
                     android:autoSizeTextType="uniform"
                     android:background="@color/tile1"
                     android:gravity="center"
+                    android:onClick="digitClicked"
                     android:text="6" />
 
                 <TextView
@@ -192,6 +194,7 @@
                     android:autoSizeTextType="uniform"
                     android:background="@color/tile1"
                     android:gravity="center"
+                    android:onClick="digitClicked"
                     android:text="2" />
 
                 <TextView
@@ -203,6 +206,7 @@
                     android:autoSizeTextType="uniform"
                     android:background="@color/tile2"
                     android:gravity="center"
+                    android:onClick="digitClicked"
                     android:text="7" />
 
                 <TextView
@@ -214,6 +218,7 @@
                     android:autoSizeTextType="uniform"
                     android:background="@color/tile2"
                     android:gravity="center"
+                    android:onClick="digitClicked"
                     android:text="3" />
 
                 <TextView
@@ -225,6 +230,7 @@
                     android:autoSizeTextType="uniform"
                     android:background="@color/tile1"
                     android:gravity="center"
+                    android:onClick="digitClicked"
                     android:text="8" />
 
                 <TextView
@@ -236,6 +242,7 @@
                     android:autoSizeTextType="uniform"
                     android:background="@color/tile1"
                     android:gravity="center"
+                    android:onClick="digitClicked"
                     android:text="4" />
 
                 <TextView
@@ -247,10 +254,11 @@
                     android:autoSizeTextType="uniform"
                     android:background="@color/tile2"
                     android:gravity="center"
+                    android:onClick="digitClicked"
                     android:text="9" />
 
                 <TextView
-                    android:id="@+id/backspaceDigits"
+                    android:id="@+id/digitsBackspace"
                     android:layout_column="5"
                     android:layout_columnWeight="1"
                     android:layout_margin="@dimen/button_margin"
@@ -258,10 +266,11 @@
                     android:layout_rowWeight="1"
                     android:background="@color/backspace"
                     android:gravity="center"
+                    android:onClick="digitsBackspaceClicked"
                     android:text="&lt;&lt;" />
 
                 <TextView
-                    android:id="@+id/okDigits"
+                    android:id="@+id/digitsOk"
                     android:layout_column="5"
                     android:layout_columnWeight="1"
                     android:layout_margin="@dimen/button_margin"
@@ -269,6 +278,7 @@
                     android:layout_rowWeight="1"
                     android:background="@color/ok"
                     android:gravity="center"
+                    android:onClick="digtsOkClicked"
                     android:text="OK" />
 
             </GridLayout>
