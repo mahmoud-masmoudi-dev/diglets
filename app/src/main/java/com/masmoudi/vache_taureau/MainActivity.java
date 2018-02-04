@@ -186,7 +186,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void submitDigitsAnswer() {
-        TextView answer = (TextView)findViewById(R.id.lettersAnswer);
+        TextView answer = (TextView)findViewById(R.id.digitsAnswer);
         if(isAnswerFull(answer.getText().toString())) {
             Toast.makeText(this, answer.getText().toString(), Toast.LENGTH_SHORT).show();
             switchToGame(GAME.LETTERS);
