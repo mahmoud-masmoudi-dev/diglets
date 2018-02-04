@@ -175,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        return vPart+tPart;
+        return tPart+vPart;
     }
 
     public void submitLettersAnswer() {
