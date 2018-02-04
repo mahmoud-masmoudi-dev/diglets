@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
     public enum ROUND {
@@ -258,11 +259,49 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public boolean isValidNumber(int number) {
+        // Check bounds (and leading 0)
+        if(number < 1023 || number > 9876) {
+            return false;
+        }
+
+        String numberStr = Integer.toString(number);
+        String digitToTest;
+        String remainingDigits;
+        for(int i = 0; i < numberStr.length()-1; i++) { // Stop at the before-the-last digit
+            digitToTest = numberStr.substring(i, i+1);
+            remainingDigits = numberStr.substring(i+1, numberStr.length());
+
+            if(remainingDigits.indexOf(digitToTest) != -1) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public int generateRandomNumber() {
+        Random numberGenerator = new Random();
+        int number;
+
+        do {
+            number = numberGenerator.nextInt(9876+1 - 1023) + 1023;
+        }while(!isValidNumber(number));
+
+        return number;
+    }
+
+    public void startGame() {
+        int number = generateRandomNumber();
+        Toast.makeText(this, number+" generated", Toast.LENGTH_SHORT).show();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        startGame();
         switchToRound(ROUND.LETTERS);
     }
 }
