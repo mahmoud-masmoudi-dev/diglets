@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
-    public enum GAME {
+    public enum ROUND {
         LETTERS,
         DIGITS,
         NONE
@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     public static final int ANSWER_LENGTH = 4;
     public TextView lettersAnswer;
     public TextView digitsAnswer;
-    public GAME game = GAME.NONE;
+    public ROUND round = ROUND.NONE;
 
     public void resetLettersAnswer() {
         lettersAnswer = (TextView) findViewById(R.id.lettersAnswer);
@@ -182,14 +182,14 @@ public class MainActivity extends AppCompatActivity {
         TextView answer = (TextView)findViewById(R.id.lettersAnswer);
         String sortedAnswer = sortAnswerLetters(getCleanAnswer(answer.getText().toString()));
         Toast.makeText(this, sortedAnswer, Toast.LENGTH_SHORT).show();
-        switchToGame(GAME.DIGITS);
+        switchToRound(ROUND.DIGITS);
     }
 
     public void submitDigitsAnswer() {
         TextView answer = (TextView)findViewById(R.id.digitsAnswer);
         if(isAnswerFull(answer.getText().toString())) {
             Toast.makeText(this, answer.getText().toString(), Toast.LENGTH_SHORT).show();
-            switchToGame(GAME.LETTERS);
+            switchToRound(ROUND.LETTERS);
         } else {
             Toast.makeText(this, "Answer is incomplete", Toast.LENGTH_SHORT).show();
         }
@@ -226,9 +226,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void switchToGame(GAME game) {
+    public void switchToRound(ROUND round) {
         GridLayout layout;
-        switch (game) {
+        switch (round) {
             case DIGITS:
                 layout = (GridLayout) findViewById(R.id.digitsGame);
                 for (int i = 0; i < layout.getChildCount(); i++) {
@@ -263,6 +263,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        switchToGame(GAME.LETTERS);
+        switchToRound(ROUND.LETTERS);
     }
 }
