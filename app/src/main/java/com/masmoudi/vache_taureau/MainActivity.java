@@ -3,13 +3,24 @@ package com.masmoudi.vache_taureau;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.GridLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class MainActivity extends AppCompatActivity {
+    public enum GAME {
+        LETTERS,
+        DIGITS,
+        NONE
+    }
+
     public static final int ANSWER_LENGTH = 4;
     public TextView lettersAnswer;
     public TextView digitsAnswer;
+    public GAME game = GAME.NONE;
 
     public void resetLettersAnswer() {
         lettersAnswer = (TextView) findViewById(R.id.lettersAnswer);
@@ -153,16 +164,43 @@ public class MainActivity extends AppCompatActivity {
         digitsAnswer.setText(digitsAnswerText);
     }
 
+    public String sortAnswerLetters(String str) {
+        String vPart = "";
+        String tPart = "";
+        for (int i = 0; i < str.length(); i++) {
+            if(str.charAt(i) == 'V') {
+                vPart += "V";
+            } else if(str.charAt(i) == 'T') {
+                tPart += "T";
+            }
+        }
+
+        return vPart+tPart;
+    }
+
+    public void submitLettersAnswer() {
+        TextView answer = (TextView)findViewById(R.id.lettersAnswer);
+        String sortedAnswer = sortAnswerLetters(getCleanAnswer(answer.getText().toString()));
+        Toast.makeText(this, sortedAnswer, Toast.LENGTH_SHORT).show();
+        switchToGame(GAME.DIGITS);
+    }
+
+    public void submitDigitsAnswer() {
+        TextView answer = (TextView)findViewById(R.id.lettersAnswer);
+        if(isAnswerFull(answer.getText().toString())) {
+            Toast.makeText(this, answer.getText().toString(), Toast.LENGTH_SHORT).show();
+            switchToGame(GAME.LETTERS);
+        } else {
+            Toast.makeText(this, "Answer is incomplete", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     public void lettersOkClicked(View view) {
-        TextView textView = (TextView) view;
-        Toast.makeText(this, "lettersOkClicked", Toast.LENGTH_SHORT).show();
-        resetLettersAnswer();
+        submitLettersAnswer();
     }
 
     public void digitsOkClicked(View view) {
-        TextView textView = (TextView) view;
-        Toast.makeText(this, "digitsOkClicked", Toast.LENGTH_SHORT).show();
-        resetDigitsAnswer();
+        submitDigitsAnswer();
     }
 
     public void letterClicked(View view) {
@@ -188,12 +226,43 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void switchToGame(GAME game) {
+        GridLayout layout;
+        switch (game) {
+            case DIGITS:
+                layout = (GridLayout) findViewById(R.id.digitsGame);
+                for (int i = 0; i < layout.getChildCount(); i++) {
+                    layout.getChildAt(i).setEnabled(true);
+                }
+                layout = (GridLayout) findViewById(R.id.lettersGame);
+                for (int i = 0; i < layout.getChildCount(); i++) {
+                    layout.getChildAt(i).setEnabled(false);
+                }
+                resetDigitsAnswer();
+                break;
+
+            case LETTERS:
+                layout = (GridLayout) findViewById(R.id.digitsGame);
+                for (int i = 0; i < layout.getChildCount(); i++) {
+                    layout.getChildAt(i).setEnabled(false);
+                }
+                layout = (GridLayout) findViewById(R.id.lettersGame);
+                for (int i = 0; i < layout.getChildCount(); i++) {
+                    layout.getChildAt(i).setEnabled(true);
+                }
+                resetLettersAnswer();
+                break;
+
+            default:
+                break;
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        resetLettersAnswer();
-        resetDigitsAnswer();
+        switchToGame(GAME.LETTERS);
     }
 }
