@@ -15,31 +15,28 @@
             android:layout_height="match_parent">
 
             <GridLayout
-                android:layout_width="match_parent"
-                android:columnCount="6"
-                android:rowCount="4"
                 android:layout_column="0"
                 android:layout_row="0"
-                android:layout_rowWeight="10">
+                android:layout_rowWeight="10"
+                android:layout_gravity="fill">
 
                 <TextView
                     android:id="@+id/lettersAnswer"
                     android:layout_column="0"
                     android:layout_columnSpan="6"
                     android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
                     android:layout_margin="@dimen/text_margin"
                     android:layout_row="0"
                     android:layout_rowWeight="2"
                     android:background="@color/text"
                     android:gravity="center"
+                    android:textSize="50sp"
                     android:text="VVVV" />
 
                 <TextView
                     android:layout_column="0"
                     android:layout_columnSpan="1"
                     android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
                     android:layout_margin="@dimen/button_margin"
                     android:layout_row="1"
                     android:layout_rowWeight="1"
@@ -66,6 +63,7 @@
                     android:background="@color/tile1"
                     android:gravity="center"
                     android:onClick="letterClicked"
+                    android:tag="T"
                     android:text="T" />
 
                 <TextView
@@ -78,6 +76,7 @@
                     android:background="@color/tile1"
                     android:gravity="center"
                     android:onClick="letterClicked"
+                    android:tag="V"
                     android:text="V" />
 
                 <TextView
@@ -109,32 +108,32 @@
             </GridLayout>
 
             <GridLayout
-                android:layout_width="match_parent"
                 android:layout_column="0"
                 android:layout_margin="@dimen/separator_margin"
                 android:layout_row="1"
                 android:layout_rowWeight="1"
-                android:background="@color/separator">
+                android:background="@color/separator"
+                android:layout_gravity="fill">
 
             </GridLayout>
 
             <GridLayout
-                android:layout_width="match_parent"
                 android:layout_column="0"
                 android:layout_row="2"
-                android:layout_rowWeight="10">
+                android:layout_rowWeight="10"
+                android:layout_gravity="fill">
 
                 <TextView
                     android:id="@+id/digitsAnswer"
                     android:layout_column="0"
                     android:layout_columnSpan="6"
                     android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
                     android:layout_margin="@dimen/text_margin"
                     android:layout_row="0"
                     android:layout_rowWeight="2"
                     android:background="@color/text"
                     android:gravity="center"
+                    android:textSize="50sp"
                     android:text="1234" />
 
                 <TextView
@@ -147,6 +146,7 @@
                     android:background="@color/tile1"
                     android:gravity="center"
                     android:onClick="digitClicked"
+                    android:tag="0"
                     android:text="0" />
 
                 <TextView
@@ -159,6 +159,7 @@
                     android:background="@color/tile2"
                     android:gravity="center"
                     android:onClick="digitClicked"
+                    android:tag="5"
                     android:text="5" />
 
                 <TextView
@@ -171,6 +172,7 @@
                     android:background="@color/tile2"
                     android:gravity="center"
                     android:onClick="digitClicked"
+                    android:tag="1"
                     android:text="1" />
 
                 <TextView
@@ -183,6 +185,7 @@
                     android:background="@color/tile1"
                     android:gravity="center"
                     android:onClick="digitClicked"
+                    android:tag="6"
                     android:text="6" />
 
                 <TextView
@@ -195,6 +198,7 @@
                     android:background="@color/tile1"
                     android:gravity="center"
                     android:onClick="digitClicked"
+                    android:tag="2"
                     android:text="2" />
 
                 <TextView
@@ -207,6 +211,7 @@
                     android:background="@color/tile2"
                     android:gravity="center"
                     android:onClick="digitClicked"
+                    android:tag="7"
                     android:text="7" />
 
                 <TextView
@@ -219,6 +224,7 @@
                     android:background="@color/tile2"
                     android:gravity="center"
                     android:onClick="digitClicked"
+                    android:tag="3"
                     android:text="3" />
 
                 <TextView
@@ -231,6 +237,7 @@
                     android:background="@color/tile1"
                     android:gravity="center"
                     android:onClick="digitClicked"
+                    android:tag="8"
                     android:text="8" />
 
                 <TextView
@@ -243,6 +250,7 @@
                     android:background="@color/tile1"
                     android:gravity="center"
                     android:onClick="digitClicked"
+                    android:tag="4"
                     android:text="4" />
 
                 <TextView
@@ -255,6 +263,7 @@
                     android:background="@color/tile2"
                     android:gravity="center"
                     android:onClick="digitClicked"
+                    android:tag="9"
                     android:text="9" />
 
                 <TextView
@@ -278,7 +287,7 @@
                     android:layout_rowWeight="1"
                     android:background="@color/ok"
                     android:gravity="center"
-                    android:onClick="digtsOkClicked"
+                    android:onClick="digitsOkClicked"
                     android:text="OK" />
 
             </GridLayout>
