@@ -1,5 +1,6 @@
 package com.masmoudi.vache_taureau;
 
+import android.support.design.widget.Snackbar;
 import android.widget.GridLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -99,7 +100,9 @@ public class Game {
                 Toast.makeText(context, result+"("+numberToGuess+")", Toast.LENGTH_SHORT).show();
                 switchToRound(ROUND.LETTERS);
             } else {
-                Toast.makeText(context, "You win :)", Toast.LENGTH_SHORT).show();
+                Snackbar.make(lettersLayout, "You win :)", Snackbar.LENGTH_SHORT)
+                        .setAction("Action", null)
+                        .show();
             }
         } else {
             Toast.makeText(context, "Answer is incomplete", Toast.LENGTH_SHORT).show();
@@ -108,7 +111,7 @@ public class Game {
 
     public void startGame() {
         numberToGuess = generateRandomNumber();
-        switchToRound(ROUND.LETTERS);
+        switchToRound(ROUND.DIGITS);
         Toast.makeText(context, "Game started ("+numberToGuess+")", Toast.LENGTH_SHORT).show();
     }
 
