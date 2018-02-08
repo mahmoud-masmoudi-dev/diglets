@@ -1,5 +1,7 @@
 package com.masmoudi.vache_taureau;
 
+import android.content.Intent;
+import android.os.SystemClock;
 import android.support.design.widget.Snackbar;
 import android.widget.GridLayout;
 import android.widget.TextView;
@@ -22,12 +24,18 @@ public class Game {
         NONE
     }
 
+    public enum GAME_MODE {
+        SINGLE_MODE_DIGITS,
+        SINGLE_MODE_LETTERS
+    }
+
     private Context context;
     private TextView lettersAnswer;
     private TextView digitsAnswer;
     private GridLayout lettersLayout;
     private GridLayout digitsLayout;
     private int numberToGuess;
+    private GAME_MODE gameMode;
 
     // PUBLIC methods
     public Game(Context context) {
@@ -89,7 +97,25 @@ public class Game {
         } else {
             Toast.makeText(context, sortedAnswer, Toast.LENGTH_SHORT).show();
         }
-        switchToRound(ROUND.DIGITS);
+
+        switch(gameMode) {
+            case SINGLE_MODE_DIGITS:
+                break;
+
+            case SINGLE_MODE_LETTERS:
+                if(sortedAnswer.equals("TTTT")) {
+                    Intent intent = new Intent(context, MainActivity.class);
+                    intent.putExtra("HAS_WON", true);
+                    context.startActivity(intent);
+                } else {
+                    resetLettersAnswer();
+                }
+                break;
+
+            default:
+                break;
+        }
+
     }
 
     public void submitDigitsAnswer() {
@@ -98,21 +124,43 @@ public class Game {
             String result = compareNumbers(answerText, Integer.toString(numberToGuess));
             if(!result.equals("TTTT")) {
                 Toast.makeText(context, result+"("+numberToGuess+")", Toast.LENGTH_SHORT).show();
-                switchToRound(ROUND.LETTERS);
+                if(gameMode == GAME_MODE.SINGLE_MODE_DIGITS) {
+                    // TODO : Do something
+                    resetDigitsAnswer();
+                } else {
+                    switchToRound(ROUND.LETTERS);
+                }
             } else {
-                Snackbar.make(lettersLayout, "You win :)", Snackbar.LENGTH_SHORT)
-                        .setAction("Action", null)
-                        .show();
+                Intent intent = new Intent(context, MainActivity.class);
+                intent.putExtra("HAS_WON", true);
+                context.startActivity(intent);
             }
         } else {
             Toast.makeText(context, "Answer is incomplete", Toast.LENGTH_SHORT).show();
         }
     }
 
-    public void startGame() {
-        numberToGuess = generateRandomNumber();
-        switchToRound(ROUND.DIGITS);
-        Toast.makeText(context, "Game started ("+numberToGuess+")", Toast.LENGTH_SHORT).show();
+    public void startGame(GAME_MODE gameMode) {
+        this.gameMode = gameMode;
+        switch(gameMode) {
+            case SINGLE_MODE_DIGITS:
+                resetLettersAnswer();
+                resetDigitsAnswer();
+                numberToGuess = generateRandomNumber();
+                switchToRound(ROUND.DIGITS);
+                Toast.makeText(context, "Single mode digits started ("+numberToGuess+")", Toast.LENGTH_SHORT).show();
+                break;
+
+            case SINGLE_MODE_LETTERS:
+                resetLettersAnswer();
+                resetDigitsAnswer();
+                switchToRound(ROUND.LETTERS);
+                Toast.makeText(context, "Single mode letters started", Toast.LENGTH_SHORT).show();
+                break;
+
+            default:
+                break;
+        }
     }
 
     // PRIVATE methods
