@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="text">#748590</color>
-    <color name="separator">#243540</color>
-    <color name="tile1">#8FD2FF</color>
-    <color name="tile2">#6B9EBF</color>
-    <color name="backspace">#48697F</color>
-    <color name="ok">#48697F</color>
+    <color name="answer1">#000000</color>
+    <color name="answer2">#FFFFFF</color>
+    <color name="tile1">#4C7FBF</color>
+    <color name="tile2">#65A9FF</color>
+    <color name="backspace">#192A40</color>
+    <color name="ok">#192A40</color>
+    <color name="background1">#5B98E5</color>
+    <color name="background2">#33547F</color>
+
+    <!--<color name="answer1">#000000</color>-->
+    <!--<color name="answer2">#FFFFFF</color>-->
+    <!--<color name="tile1">#8FD2FF</color>-->
+    <!--<color name="tile2">#6B9EBF</color>-->
+    <!--<color name="backspace">#48697F</color>-->
+    <!--<color name="ok">#48697F</color>-->
+    <!--<color name="background1">#748590</color>-->
+    <!--<color name="background2">#748590</color>-->
 </resources>

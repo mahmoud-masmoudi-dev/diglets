@@ -1,13 +1,11 @@
 package com.masmoudi.vache_taureau;
 
+import android.content.Context;
 import android.content.Intent;
-import android.os.SystemClock;
-import android.support.design.widget.Snackbar;
-import android.widget.GridLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.content.Context;
 
+import java.util.HashMap;
 import java.util.Random;
 
 /**
@@ -30,72 +28,73 @@ public class Game {
     }
 
     private Context context;
-    private TextView lettersAnswer;
-    private TextView digitsAnswer;
-    private GridLayout lettersLayout;
-    private GridLayout digitsLayout;
+    private TextView playerAnswer;
+    private TextView opponentAnswer;
+
     private int numberToGuess;
     private GAME_MODE gameMode;
+    private HashMap<String, String> playerLettersHistory;
+    private HashMap<String, String> playerDigitsHistory;
+    private HashMap<String, String> opponentLettersHistory;
+    private HashMap<String, String> opponentDigitsHistory;
 
     // PUBLIC methods
     public Game(Context context) {
-        this.lettersAnswer = null;
-        this.digitsAnswer = null;
-        this.lettersLayout = null;
-        this.digitsLayout = null;
+        this.playerAnswer = null;
+        this.opponentAnswer = null;
         this.context = context;
     }
 
-    public void setDigitsAnswer(TextView digitsAnswer) {
-        this.digitsAnswer = digitsAnswer;
+    public void setPlayerAnswer(TextView playerAnswer) {
+        this.playerAnswer = playerAnswer;
     }
 
-    public void setLettersLayout(GridLayout lettersLayout) {
-        this.lettersLayout = lettersLayout;
+    public void setOpponentAnswer(TextView opponentAnswer) {
+        this.opponentAnswer = opponentAnswer;
     }
 
-    public void setDigitsLayout(GridLayout digitsLayout) {
-        this.digitsLayout = digitsLayout;
-    }
+    public void backspaceAnswer() {
+        String playerAnswerText = playerAnswer.getText().toString();
 
-    public void setLettersAnswer(TextView lettersAnswer) {
-        this.lettersAnswer = lettersAnswer;
-    }
-
-    public void backspaceLetter() {
-        String lettersAnswerText = lettersAnswer.getText().toString();
-
-        lettersAnswerText = removeLastLetterFromAnswer(lettersAnswerText);
-        lettersAnswer.setText(lettersAnswerText);
-    }
-
-    public void backspaceDigit() {
-        String digitsAnswerText = digitsAnswer.getText().toString();
-
-        digitsAnswerText = removeLastLetterFromAnswer(digitsAnswerText);
-        digitsAnswer.setText(digitsAnswerText);
+        playerAnswerText = removeLastLetterFromAnswer(playerAnswerText);
+        playerAnswer.setText(playerAnswerText);
     }
 
     public void addLetter(String letter) {
-        String lettersAnswerText = lettersAnswer.getText().toString();
+        String playerAnswerText = playerAnswer.getText().toString();
 
-        lettersAnswerText = addLetterToAnswer(letter, lettersAnswerText);
-        lettersAnswer.setText(lettersAnswerText);
+        playerAnswerText = addLetterToAnswer(letter, playerAnswerText);
+        playerAnswer.setText(playerAnswerText);
     }
 
     public void addDigit(String digit) {
-        String digitsAnswerText = digitsAnswer.getText().toString();
+        String playerAnswerText = playerAnswer.getText().toString();
 
-        digitsAnswerText = addDigitToAnswer(digit, digitsAnswerText);
-        digitsAnswer.setText(digitsAnswerText);
+        playerAnswerText = addDigitToAnswer(digit, playerAnswerText);
+        playerAnswer.setText(playerAnswerText);
     }
 
+    public void submitAnswer(ROUND round) {
+        switch(round) {
+            case DIGITS:
+                submitDigitsAnswer();
+                break;
+
+            case LETTERS:
+                submitLettersAnswer();
+                break;
+
+            default:
+                break;
+        }
+    }
+    
     public void submitLettersAnswer() {
-        String sortedAnswer = sortAnswerLetters(getCleanAnswer(lettersAnswer.getText().toString()));
+        String sortedAnswer = sortAnswerLetters(getCleanAnswer(playerAnswer.getText().toString()));
         if(sortedAnswer.isEmpty()) {
-            Toast.makeText(context, "Ø", Toast.LENGTH_SHORT).show();
+            opponentAnswer.setText("Ø");
         } else {
-            Toast.makeText(context, sortedAnswer, Toast.LENGTH_SHORT).show();
+            opponentAnswer.setText(sortedAnswer);
         }
 
         switch(gameMode) {
@@ -108,7 +107,7 @@ public class Game {
                     intent.putExtra("HAS_WON", true);
                     context.startActivity(intent);
                 } else {
-                    resetLettersAnswer();
+                    resetPlayerAnswer();
                 }
                 break;
 
@@ -119,16 +118,22 @@ public class Game {
     }
 
     public void submitDigitsAnswer() {
-        String answerText = digitsAnswer.getText().toString();
+        String answerText = playerAnswer.getText().toString();
         if(isAnswerFull(answerText)) {
             String result = compareNumbers(answerText, Integer.toString(numberToGuess));
             if(!result.equals("TTTT")) {
-                Toast.makeText(context, result+"("+numberToGuess+")", Toast.LENGTH_SHORT).show();
-                if(gameMode == GAME_MODE.SINGLE_MODE_DIGITS) {
-                    // TODO : Do something
-                    resetDigitsAnswer();
-                } else {
-                    switchToRound(ROUND.LETTERS);
+                opponentAnswer.setText(result);
+                GameActivity.appendAnswerToHistory(result);
+
+                switch (gameMode) {
+                    case SINGLE_MODE_DIGITS:
+                        // TODO : Do something
+                        resetPlayerAnswer();
+                        break;
+
+                    default:
+//                        switchToRound(ROUND.LETTERS);
+                        break;
                 }
             } else {
                 Intent intent = new Intent(context, MainActivity.class);
@@ -144,16 +149,16 @@ public class Game {
         this.gameMode = gameMode;
         switch(gameMode) {
             case SINGLE_MODE_DIGITS:
-                resetLettersAnswer();
-                resetDigitsAnswer();
+                resetPlayerAnswer();
+                resetOpponentAnswer();
                 numberToGuess = generateRandomNumber();
                 switchToRound(ROUND.DIGITS);
                 Toast.makeText(context, "Single mode digits started ("+numberToGuess+")", Toast.LENGTH_SHORT).show();
                 break;
 
             case SINGLE_MODE_LETTERS:
-                resetLettersAnswer();
-                resetDigitsAnswer();
+                resetPlayerAnswer();
+                resetOpponentAnswer();
                 switchToRound(ROUND.LETTERS);
                 Toast.makeText(context, "Single mode letters started", Toast.LENGTH_SHORT).show();
                 break;
@@ -164,18 +169,12 @@ public class Game {
     }
 
     // PRIVATE methods
-    private void resetLettersAnswer() {
-        String lettersAnswerText = "----";
-        if(lettersAnswer != null) {
-            lettersAnswer.setText(lettersAnswerText);
-        }
+    private void resetPlayerAnswer() {
+        playerAnswer.setText("----");
     }
 
-    private void resetDigitsAnswer() {
-        String digitsAnswerText = "----";
-        if(digitsAnswer != null) {
-            digitsAnswer.setText(digitsAnswerText);
-        }
+    private void resetOpponentAnswer() {
+        opponentAnswer.setText("");
     }
 
     private int getNbDashes(String str) {
@@ -295,23 +294,11 @@ public class Game {
     private void switchToRound(ROUND round) {
         switch (round) {
             case DIGITS:
-                for (int i = 0; i < digitsLayout.getChildCount(); i++) {
-                    digitsLayout.getChildAt(i).setEnabled(true);
-                }
-                for (int i = 0; i < lettersLayout.getChildCount(); i++) {
-                    lettersLayout.getChildAt(i).setEnabled(false);
-                }
-                resetDigitsAnswer();
+                GameActivity.attachDigitsKeyboard();
                 break;
 
             case LETTERS:
-                for (int i = 0; i < digitsLayout.getChildCount(); i++) {
-                    digitsLayout.getChildAt(i).setEnabled(false);
-                }
-                for (int i = 0; i < lettersLayout.getChildCount(); i++) {
-                    lettersLayout.getChildAt(i).setEnabled(true);
-                }
-                resetLettersAnswer();
+                GameActivity.attachLettersKeyboard();
                 break;
 
             default:

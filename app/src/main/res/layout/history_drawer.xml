@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/history_drawer"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    tools:context="com.masmoudi.vache_taureau.GameActivity">
+
+    <ListView
+        android:id="@+id/history_drawer_list"
+        android:layout_width="500px"
+        android:layout_height="match_parent"
+        android:background="@color/background2"/>
+
+    <ImageView
+        android:id="@+id/history_drawer_tab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/stat_notify_more"
+        android:layout_toRightOf="@id/history_drawer_list"/>
+
+</RelativeLayout>

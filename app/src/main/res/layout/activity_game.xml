@@ -1,59 +1,223 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.masmoudi.vache_taureau.GameActivity">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <GridLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/opponentAnswer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/button_margin"
+                android:layout_marginBottom="@dimen/button_margin"
+                android:layout_marginTop="20dp"
+                android:background="@color/background1"
+                android:gravity="center"
+                android:paddingVertical="50dp"
+                android:text="VVVV"
+                android:textColor="@color/answer1"
+                android:textSize="120sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/playerAnswer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/button_margin"
+                android:background="@color/background2"
+                android:gravity="center"
+                android:text="1234"
+                android:textColor="@color/answer2"
+                android:textSize="120sp" />
+
+            <LinearLayout
+                android:id="@+id/keyboardLayout"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical">
+
+            </LinearLayout>
 
             <GridLayout
-                android:id="@+id/lettersGame"
-                android:layout_column="0"
-                android:layout_gravity="fill"
-                android:layout_row="0"
-                android:layout_rowWeight="10">
+                android:id="@+id/digitsKeyboard"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/lettersAnswer"
                     android:layout_column="0"
-                    android:layout_columnSpan="6"
                     android:layout_columnWeight="1"
-                    android:layout_margin="@dimen/text_margin"
+                    android:layout_margin="@dimen/button_margin"
                     android:layout_row="0"
-                    android:layout_rowWeight="2"
-                    android:background="@color/text"
-                    android:layout_gravity="center_vertical"
+                    android:layout_rowWeight="1"
+                    android:autoSizeTextType="uniform"
+                    android:background="@color/tile1"
                     android:gravity="center"
-                    android:text="VVVV"
-                    android:textSize="80sp" />
+                    android:onClick="digitClicked"
+                    android:tag="0"
+                    android:text="0" />
 
                 <TextView
                     android:layout_column="0"
-                    android:layout_columnSpan="1"
                     android:layout_columnWeight="1"
                     android:layout_margin="@dimen/button_margin"
                     android:layout_row="1"
                     android:layout_rowWeight="1"
                     android:autoSizeTextType="uniform"
-                    android:gravity="center" />
+                    android:background="@color/tile2"
+                    android:gravity="center"
+                    android:onClick="digitClicked"
+                    android:tag="5"
+                    android:text="5" />
 
                 <TextView
-                    android:layout_column="0"
-                    android:layout_columnSpan="1"
+                    android:layout_column="1"
                     android:layout_columnWeight="1"
                     android:layout_margin="@dimen/button_margin"
-                    android:layout_row="2"
+                    android:layout_row="0"
                     android:layout_rowWeight="1"
                     android:autoSizeTextType="uniform"
-                    android:gravity="center" />
+                    android:background="@color/tile2"
+                    android:gravity="center"
+                    android:onClick="digitClicked"
+                    android:tag="1"
+                    android:text="1" />
+
+                <TextView
+                    android:layout_column="1"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="@dimen/button_margin"
+                    android:layout_row="1"
+                    android:layout_rowWeight="1"
+                    android:autoSizeTextType="uniform"
+                    android:background="@color/tile1"
+                    android:gravity="center"
+                    android:onClick="digitClicked"
+                    android:tag="6"
+                    android:text="6" />
+
+                <TextView
+                    android:layout_column="2"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="@dimen/button_margin"
+                    android:layout_row="0"
+                    android:layout_rowWeight="1"
+                    android:autoSizeTextType="uniform"
+                    android:background="@color/tile1"
+                    android:gravity="center"
+                    android:onClick="digitClicked"
+                    android:tag="2"
+                    android:text="2" />
+
+                <TextView
+                    android:layout_column="2"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="@dimen/button_margin"
+                    android:layout_row="1"
+                    android:layout_rowWeight="1"
+                    android:autoSizeTextType="uniform"
+                    android:background="@color/tile2"
+                    android:gravity="center"
+                    android:onClick="digitClicked"
+                    android:tag="7"
+                    android:text="7" />
+
+                <TextView
+                    android:layout_column="3"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="@dimen/button_margin"
+                    android:layout_row="0"
+                    android:layout_rowWeight="1"
+                    android:autoSizeTextType="uniform"
+                    android:background="@color/tile2"
+                    android:gravity="center"
+                    android:onClick="digitClicked"
+                    android:tag="3"
+                    android:text="3" />
+
+                <TextView
+                    android:layout_column="3"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="@dimen/button_margin"
+                    android:layout_row="1"
+                    android:layout_rowWeight="1"
+                    android:autoSizeTextType="uniform"
+                    android:background="@color/tile1"
+                    android:gravity="center"
+                    android:onClick="digitClicked"
+                    android:tag="8"
+                    android:text="8" />
+
+                <TextView
+                    android:layout_column="4"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="@dimen/button_margin"
+                    android:layout_row="0"
+                    android:layout_rowWeight="1"
+                    android:autoSizeTextType="uniform"
+                    android:background="@color/tile1"
+                    android:gravity="center"
+                    android:onClick="digitClicked"
+                    android:tag="4"
+                    android:text="4" />
+
+                <TextView
+                    android:layout_column="4"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="@dimen/button_margin"
+                    android:layout_row="1"
+                    android:layout_rowWeight="1"
+                    android:autoSizeTextType="uniform"
+                    android:background="@color/tile2"
+                    android:gravity="center"
+                    android:onClick="digitClicked"
+                    android:tag="9"
+                    android:text="9" />
+
+                <TextView
+                    android:id="@+id/digitsBackspace"
+                    android:layout_column="5"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="@dimen/button_margin"
+                    android:layout_row="0"
+                    android:layout_rowWeight="1"
+                    android:background="@color/backspace"
+                    android:gravity="center"
+                    android:onClick="digitsBackspaceClicked"
+                    android:text="&lt;&lt;" />
+
+                <TextView
+                    android:id="@+id/digitsOk"
+                    android:layout_column="5"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="@dimen/button_margin"
+                    android:layout_row="1"
+                    android:layout_rowWeight="1"
+                    android:background="@color/ok"
+                    android:gravity="center"
+                    android:onClick="digitsOkClicked"
+                    android:text="OK" />
+            </GridLayout>
+
+            <GridLayout
+                android:id="@+id/lettersKeyboard"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
                 <TextView
                     android:layout_column="1"
@@ -75,7 +239,7 @@
                     android:layout_row="2"
                     android:layout_rowWeight="1"
                     android:autoSizeTextType="uniform"
-                    android:background="@color/tile1"
+                    android:background="@color/tile2"
                     android:gravity="center"
                     android:onClick="letterClicked"
                     android:tag="V"
@@ -109,194 +273,9 @@
 
             </GridLayout>
 
-            <GridLayout
-                android:layout_column="0"
-                android:layout_gravity="fill"
-                android:layout_margin="@dimen/separator_margin"
-                android:layout_row="1"
-                android:layout_rowWeight="1"
-                android:background="@color/separator">
+        </LinearLayout>
+    </LinearLayout>
 
-            </GridLayout>
-
-            <GridLayout
-                android:id="@+id/digitsGame"
-                android:layout_column="0"
-                android:layout_gravity="fill"
-                android:layout_row="2"
-                android:layout_rowWeight="10">
-
-                <TextView
-                    android:id="@+id/digitsAnswer"
-                    android:layout_column="0"
-                    android:layout_columnSpan="6"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="@dimen/text_margin"
-                    android:layout_row="0"
-                    android:layout_rowWeight="2"
-                    android:background="@color/text"
-                    android:layout_gravity="center_vertical"
-                    android:gravity="center"
-                    android:text="1234"
-                    android:textSize="80sp" />
-
-                <TextView
-                    android:layout_column="0"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="@dimen/button_margin"
-                    android:layout_row="1"
-                    android:layout_rowWeight="1"
-                    android:autoSizeTextType="uniform"
-                    android:background="@color/tile1"
-                    android:gravity="center"
-                    android:onClick="digitClicked"
-                    android:tag="0"
-                    android:text="0" />
-
-                <TextView
-                    android:layout_column="0"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="@dimen/button_margin"
-                    android:layout_row="2"
-                    android:layout_rowWeight="1"
-                    android:autoSizeTextType="uniform"
-                    android:background="@color/tile2"
-                    android:gravity="center"
-                    android:onClick="digitClicked"
-                    android:tag="5"
-                    android:text="5" />
-
-                <TextView
-                    android:layout_column="1"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="@dimen/button_margin"
-                    android:layout_row="1"
-                    android:layout_rowWeight="1"
-                    android:autoSizeTextType="uniform"
-                    android:background="@color/tile2"
-                    android:gravity="center"
-                    android:onClick="digitClicked"
-                    android:tag="1"
-                    android:text="1" />
-
-                <TextView
-                    android:layout_column="1"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="@dimen/button_margin"
-                    android:layout_row="2"
-                    android:layout_rowWeight="1"
-                    android:autoSizeTextType="uniform"
-                    android:background="@color/tile1"
-                    android:gravity="center"
-                    android:onClick="digitClicked"
-                    android:tag="6"
-                    android:text="6" />
-
-                <TextView
-                    android:layout_column="2"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="@dimen/button_margin"
-                    android:layout_row="1"
-                    android:layout_rowWeight="1"
-                    android:autoSizeTextType="uniform"
-                    android:background="@color/tile1"
-                    android:gravity="center"
-                    android:onClick="digitClicked"
-                    android:tag="2"
-                    android:text="2" />
-
-                <TextView
-                    android:layout_column="2"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="@dimen/button_margin"
-                    android:layout_row="2"
-                    android:layout_rowWeight="1"
-                    android:autoSizeTextType="uniform"
-                    android:background="@color/tile2"
-                    android:gravity="center"
-                    android:onClick="digitClicked"
-                    android:tag="7"
-                    android:text="7" />
-
-                <TextView
-                    android:layout_column="3"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="@dimen/button_margin"
-                    android:layout_row="1"
-                    android:layout_rowWeight="1"
-                    android:autoSizeTextType="uniform"
-                    android:background="@color/tile2"
-                    android:gravity="center"
-                    android:onClick="digitClicked"
-                    android:tag="3"
-                    android:text="3" />
-
-                <TextView
-                    android:layout_column="3"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="@dimen/button_margin"
-                    android:layout_row="2"
-                    android:layout_rowWeight="1"
-                    android:autoSizeTextType="uniform"
-                    android:background="@color/tile1"
-                    android:gravity="center"
-                    android:onClick="digitClicked"
-                    android:tag="8"
-                    android:text="8" />
-
-                <TextView
-                    android:layout_column="4"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="@dimen/button_margin"
-                    android:layout_row="1"
-                    android:layout_rowWeight="1"
-                    android:autoSizeTextType="uniform"
-                    android:background="@color/tile1"
-                    android:gravity="center"
-                    android:onClick="digitClicked"
-                    android:tag="4"
-                    android:text="4" />
-
-                <TextView
-                    android:layout_column="4"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="@dimen/button_margin"
-                    android:layout_row="2"
-                    android:layout_rowWeight="1"
-                    android:autoSizeTextType="uniform"
-                    android:background="@color/tile2"
-                    android:gravity="center"
-                    android:onClick="digitClicked"
-                    android:tag="9"
-                    android:text="9" />
-
-                <TextView
-                    android:id="@+id/digitsBackspace"
-                    android:layout_column="5"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="@dimen/button_margin"
-                    android:layout_row="1"
-                    android:layout_rowWeight="1"
-                    android:background="@color/backspace"
-                    android:gravity="center"
-                    android:onClick="digitsBackspaceClicked"
-                    android:text="&lt;&lt;" />
-
-                <TextView
-                    android:id="@+id/digitsOk"
-                    android:layout_column="5"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="@dimen/button_margin"
-                    android:layout_row="2"
-                    android:layout_rowWeight="1"
-                    android:background="@color/ok"
-                    android:gravity="center"
-                    android:onClick="digitsOkClicked"
-                    android:text="OK" />
-
-            </GridLayout>
-        </GridLayout>
-
-    </RelativeLayout>
+    <include layout="@layout/history_drawer"/>
 
 </android.support.constraint.ConstraintLayout>
