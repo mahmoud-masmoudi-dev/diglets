@@ -26,8 +26,9 @@ public class GameActivity extends AppCompatActivity {
     private TextView opponentAnswer;
     private Game mainGame;
     private ListView listView;
-    private static ArrayList<String> arrayList;
-    private static ArrayAdapter<String> arrayAdapter;
+    private static ArrayList<String> playerAnswers;
+    private static ArrayList<String> opponentAnswers;
+    private static CustomAdapter customAdapter;
 
     public static View digitsKeyboard;
     public static View lettersKeyboard;
@@ -88,9 +89,10 @@ public class GameActivity extends AppCompatActivity {
         ((ViewGroup)keyboardLayout).addView(lettersKeyboard);
     }
 
-    public static void appendAnswerToHistory(String answer) {
-        arrayList.add(answer);
-        arrayAdapter.notifyDataSetChanged();
+    public static void appendAnswerToHistory(String playerAnswer, String opponentAnswer) {
+        playerAnswers.add(playerAnswer);
+        opponentAnswers.add(opponentAnswer);
+        customAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -116,13 +118,14 @@ public class GameActivity extends AppCompatActivity {
         });
 
         listView = (ListView) findViewById(R.id.history_drawer_list);
-        arrayList = new ArrayList<String>();
-        arrayList.add("Example");
 
-        arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayList);
-        arrayAdapter.setNotifyOnChange(true);
+        playerAnswers = new ArrayList<String>();
+        opponentAnswers = new ArrayList<String>();
 
-        listView.setAdapter(arrayAdapter);
+        customAdapter = new CustomAdapter(this, playerAnswers, opponentAnswers);
+        customAdapter.setNotifyOnChange(true);
+
+        listView.setAdapter(customAdapter);
 
         Intent intent = getIntent();
         Game.GAME_MODE gameMode = (Game.GAME_MODE) intent.getSerializableExtra("GAME_MODE");

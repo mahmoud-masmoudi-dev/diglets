@@ -1,22 +1,11 @@
 package com.masmoudi.vache_taureau;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.GridLayout;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -28,9 +17,16 @@ public class MainActivity extends AppCompatActivity {
         Button singleModeLettersButton = (Button) findViewById(R.id.singleModeLettersButton);
 
         Intent intent = getIntent();
-        boolean hasWon = intent.getBooleanExtra("HAS_WON", false);
-        if(hasWon) {
+        boolean playerWon = intent.getBooleanExtra("PLAYER_WON", false);
+        boolean opponentWon = intent.getBooleanExtra("OPPONENT_WON", false);
+
+        if(playerWon) {
             Snackbar.make(singleModeDigitsButton, "You win ;)", Snackbar.LENGTH_SHORT)
+                    .setAction("Action", null)
+                    .show();
+        }
+        if (opponentWon) {
+            Snackbar.make(singleModeDigitsButton, "Opponent wins :(", Snackbar.LENGTH_SHORT)
                     .setAction("Action", null)
                     .show();
         }

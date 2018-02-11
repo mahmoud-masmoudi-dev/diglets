@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
@@ -32,17 +33,22 @@ public class Game {
     private TextView opponentAnswer;
 
     private int numberToGuess;
+    private ArrayList<String> possibleGuesses;
     private GAME_MODE gameMode;
-    private HashMap<String, String> playerLettersHistory;
-    private HashMap<String, String> playerDigitsHistory;
-    private HashMap<String, String> opponentLettersHistory;
-    private HashMap<String, String> opponentDigitsHistory;
 
     // PUBLIC methods
     public Game(Context context) {
         this.playerAnswer = null;
         this.opponentAnswer = null;
         this.context = context;
+        this.possibleGuesses = new ArrayList<String>();
+
+        // Fill possibleGuesses
+        for(int i = 1023; i < 9877; i++) {
+            if(isValidNumber(i)) {
+                possibleGuesses.add(Integer.toString(i));
+            }
+        }
     }
 
     public void setPlayerAnswer(TextView playerAnswer) {
@@ -92,9 +98,7 @@ public class Game {
     public void submitLettersAnswer() {
         String sortedAnswer = sortAnswerLetters(getCleanAnswer(playerAnswer.getText().toString()));
         if(sortedAnswer.isEmpty()) {
-            opponentAnswer.setText("Ø");
-        } else {
-            opponentAnswer.setText(sortedAnswer);
+            sortedAnswer = "Ø";
         }
 
         switch(gameMode) {
@@ -104,9 +108,16 @@ public class Game {
             case SINGLE_MODE_LETTERS:
                 if(sortedAnswer.equals("TTTT")) {
                     Intent intent = new Intent(context, MainActivity.class);
-                    intent.putExtra("HAS_WON", true);
+                    intent.putExtra("OPPONENT_WON", true);
                     context.startActivity(intent);
                 } else {
+                    String guess = opponentAnswer.getText().toString();
+                    updatePossibleGuesses(guess, sortedAnswer);
+                    GameActivity.appendAnswerToHistory(sortedAnswer, guess);
+
+                    guess = guessNumber();
+                    opponentAnswer.setText(guess);
+
                     resetPlayerAnswer();
                 }
                 break;
@@ -122,8 +133,11 @@ public class Game {
         if(isAnswerFull(answerText)) {
             String result = compareNumbers(answerText, Integer.toString(numberToGuess));
             if(!result.equals("TTTT")) {
+                if(result.isEmpty()) {
+                    result = "Ø";
+                }
                 opponentAnswer.setText(result);
-                GameActivity.appendAnswerToHistory(result);
+                GameActivity.appendAnswerToHistory(answerText, result);
 
                 switch (gameMode) {
                     case SINGLE_MODE_DIGITS:
@@ -137,7 +151,7 @@ public class Game {
                 }
             } else {
                 Intent intent = new Intent(context, MainActivity.class);
-                intent.putExtra("HAS_WON", true);
+                intent.putExtra("PLAYER_WON", true);
                 context.startActivity(intent);
             }
         } else {
@@ -153,12 +167,13 @@ public class Game {
                 resetOpponentAnswer();
                 numberToGuess = generateRandomNumber();
                 switchToRound(ROUND.DIGITS);
-                Toast.makeText(context, "Single mode digits started ("+numberToGuess+")", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Single mode digits started", Toast.LENGTH_SHORT).show();
                 break;
 
             case SINGLE_MODE_LETTERS:
                 resetPlayerAnswer();
-                resetOpponentAnswer();
+                String numberGuess = guessNumber();
+                opponentAnswer.setText(numberGuess);
                 switchToRound(ROUND.LETTERS);
                 Toast.makeText(context, "Single mode letters started", Toast.LENGTH_SHORT).show();
                 break;
@@ -353,5 +368,39 @@ public class Game {
         }
 
         return tPart+vPart;
+    }
+
+    /**
+     * Update possibleGuesses ArrayList
+     * @param digits opponent's suggested number
+     * @param letters player's response. Must be clean answer (without dashes)
+     */
+    private void updatePossibleGuesses(String digits, String letters) {
+        if(letters.equals("Ø")) {
+            letters = "";
+        }
+
+        int i = 0;
+        while(!possibleGuesses.isEmpty() && i < possibleGuesses.size()) {
+            if(!letters.equals(compareNumbers(possibleGuesses.get(i), digits))) {
+                possibleGuesses.remove(i);
+            } else {
+                i++;
+            }
+        }
+        
+        if(possibleGuesses.isEmpty()) {
+            Toast.makeText(context, "You're cheating ! :p", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private String guessNumber() {
+        Random numberGenerator = new Random();
+        if(!possibleGuesses.isEmpty()) {
+            int guessIndex = numberGenerator.nextInt(possibleGuesses.size());
+            return possibleGuesses.get(guessIndex);
+        } else {
+            return "Ø";
+        }
     }
 }
