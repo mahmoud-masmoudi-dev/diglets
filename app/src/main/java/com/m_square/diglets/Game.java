@@ -1,4 +1,4 @@
-package com.masmoudi.vache_taureau;
+package com.m_square.diglets;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,7 +6,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Random;
 
 /**

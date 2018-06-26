@@ -6,7 +6,7 @@
     android:id="@+id/history_drawer"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    tools:context="com.masmoudi.vache_taureau.GameActivity">
+    tools:context="com.m_square.diglets.com.m_square.diglets.GameActivity">
 
     <ListView
         android:id="@+id/history_drawer_list"

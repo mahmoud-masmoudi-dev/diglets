@@ -1,4 +1,4 @@
-package com.masmoudi.vache_taureau;
+package com.m_square.diglets;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.masmoudi.vache_taureau", appContext.getPackageName());
+        assertEquals("com.m_square.diglets", appContext.getPackageName());
     }
 }

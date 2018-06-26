@@ -1,4 +1,4 @@
-package com.masmoudi.vache_taureau;
+package com.m_square.diglets;
 
 import org.junit.Test;
 

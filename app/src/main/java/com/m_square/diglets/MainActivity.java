@@ -1,4 +1,4 @@
-package com.masmoudi.vache_taureau;
+package com.m_square.diglets;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,10 +11,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(com.m_square.diglets.R.layout.activity_main);
 
-        Button singleModeDigitsButton = (Button) findViewById(R.id.singleModeDigitsButton);
-        Button singleModeLettersButton = (Button) findViewById(R.id.singleModeLettersButton);
+        Button singleModeDigitsButton = (Button) findViewById(com.m_square.diglets.R.id.singleModeDigitsButton);
+        Button singleModeLettersButton = (Button) findViewById(com.m_square.diglets.R.id.singleModeLettersButton);
 
         Intent intent = getIntent();
         boolean playerWon = intent.getBooleanExtra("PLAYER_WON", false);

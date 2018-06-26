@@ -1,19 +1,14 @@
-package com.masmoudi.vache_taureau;
+package com.m_square.diglets;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
-import android.widget.ArrayAdapter;
-import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -98,10 +93,10 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game);
+        setContentView(com.m_square.diglets.R.layout.activity_game);
 
-        drawer = findViewById(R.id.history_drawer);
-        ImageView tab = (ImageView) findViewById(R.id.history_drawer_tab);
+        drawer = findViewById(com.m_square.diglets.R.id.history_drawer);
+        ImageView tab = (ImageView) findViewById(com.m_square.diglets.R.id.history_drawer_tab);
         drawer.setTranslationX(-500f);
 
         tab.setOnClickListener(new View.OnClickListener() {
@@ -117,7 +112,7 @@ public class GameActivity extends AppCompatActivity {
             }
         });
 
-        listView = (ListView) findViewById(R.id.history_drawer_list);
+        listView = (ListView) findViewById(com.m_square.diglets.R.id.history_drawer_list);
 
         playerAnswers = new ArrayList<String>();
         opponentAnswers = new ArrayList<String>();
@@ -130,12 +125,12 @@ public class GameActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Game.GAME_MODE gameMode = (Game.GAME_MODE) intent.getSerializableExtra("GAME_MODE");
 
-        playerAnswer = (TextView) findViewById(R.id.playerAnswer);
-        opponentAnswer = (TextView) findViewById(R.id.opponentAnswer);
+        playerAnswer = (TextView) findViewById(com.m_square.diglets.R.id.playerAnswer);
+        opponentAnswer = (TextView) findViewById(com.m_square.diglets.R.id.opponentAnswer);
 
-        digitsKeyboard = findViewById(R.id.digitsKeyboard);
-        lettersKeyboard = findViewById(R.id.lettersKeyboard);
-        keyboardLayout = findViewById(R.id.keyboardLayout);
+        digitsKeyboard = findViewById(com.m_square.diglets.R.id.digitsKeyboard);
+        lettersKeyboard = findViewById(com.m_square.diglets.R.id.lettersKeyboard);
+        keyboardLayout = findViewById(com.m_square.diglets.R.id.keyboardLayout);
 
         mainGame = new Game(getApplicationContext());
         mainGame.setPlayerAnswer(playerAnswer);
