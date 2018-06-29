@@ -1,6 +1,9 @@
 package com.m_square.diglets;
 
 import android.content.Intent;
+import android.net.Uri;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,7 +15,9 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class GameActivity extends AppCompatActivity {
+public class GameActivity extends AppCompatActivity
+        implements DigitsFragment.OnDigitsFragmentInteractionListener,
+        LettersFragment.OnLettersFragmentInteractionListener {
     // Attributes
     private View drawer;
     private boolean isDrawerOpened = false;
@@ -25,11 +30,16 @@ public class GameActivity extends AppCompatActivity {
     private static ArrayList<String> opponentAnswers;
     private static CustomAdapter customAdapter;
 
-    public static View digitsKeyboard;
-    public static View lettersKeyboard;
-    public static View keyboardLayout;
-
     // Methods
+    private static final GameActivity ourInstance = new GameActivity();
+
+    public static GameActivity getInstance() {
+        return ourInstance;
+    }
+
+    public GameActivity() {
+    }
+
     public void lettersBackspaceClicked(View view) {
         mainGame.backspaceAnswer();
     }
@@ -60,28 +70,22 @@ public class GameActivity extends AppCompatActivity {
         mainGame.addDigit(digit);
     }
 
-    public static void attachDigitsKeyboard() {
-        // Remove wichever parent of digitsKeyboard
-        ViewParent parent = digitsKeyboard.getParent();
-        if (parent != null) {
-            ((ViewGroup) parent).removeView(digitsKeyboard);
-        }
-        // Empty keyboardLayout to accept the new keyboard
-        ((ViewGroup)keyboardLayout).removeAllViews();
-        // Attach the new keyboard to keyboardLayout
-        ((ViewGroup)keyboardLayout).addView(digitsKeyboard);
+    public void attachDigitsKeyboard() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        DigitsFragment fragment = new DigitsFragment();
+        fragmentTransaction.replace(R.id.keyboardLayout, fragment);
+        fragmentTransaction.commit();
     }
 
-    public static void attachLettersKeyboard() {
-        // Remove wichever parent of lettersKeyboard
-        ViewParent parent = lettersKeyboard.getParent();
-        if (parent != null) {
-            ((ViewGroup) parent).removeView(lettersKeyboard);
-        }
-        // Empty keyboardLayout to accept the new keyboard
-        ((ViewGroup)keyboardLayout).removeAllViews();
-        // Attach the new keyboard to keyboardLayout
-        ((ViewGroup)keyboardLayout).addView(lettersKeyboard);
+    public void attachLettersKeyboard() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        LettersFragment fragment = new LettersFragment();
+        fragmentTransaction.replace(R.id.keyboardLayout, fragment);
+        fragmentTransaction.commit();
     }
 
     public static void appendAnswerToHistory(String playerAnswer, String opponentAnswer) {
@@ -128,10 +132,6 @@ public class GameActivity extends AppCompatActivity {
         playerAnswer = (TextView) findViewById(com.m_square.diglets.R.id.playerAnswer);
         opponentAnswer = (TextView) findViewById(com.m_square.diglets.R.id.opponentAnswer);
 
-        digitsKeyboard = findViewById(com.m_square.diglets.R.id.digitsKeyboard);
-        lettersKeyboard = findViewById(com.m_square.diglets.R.id.lettersKeyboard);
-        keyboardLayout = findViewById(com.m_square.diglets.R.id.keyboardLayout);
-
         mainGame = new Game(getApplicationContext());
         mainGame.setPlayerAnswer(playerAnswer);
         mainGame.setOpponentAnswer(opponentAnswer);
@@ -139,14 +139,26 @@ public class GameActivity extends AppCompatActivity {
         switch (gameMode) {
             case SINGLE_MODE_DIGITS:
                 mainGame.startGame(Game.GAME_MODE.SINGLE_MODE_DIGITS);
+                attachDigitsKeyboard();
                 break;
 
             case SINGLE_MODE_LETTERS:
                 mainGame.startGame(Game.GAME_MODE.SINGLE_MODE_LETTERS);
+                attachLettersKeyboard();
                 break;
 
             default:
                 break;
         }
+    }
+
+    @Override
+    public void onDigitsInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void onLettersInteraction(Uri uri) {
+
     }
 }

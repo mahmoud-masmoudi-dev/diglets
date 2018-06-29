@@ -165,7 +165,6 @@ public class Game {
                 resetPlayerAnswer();
                 resetOpponentAnswer();
                 numberToGuess = generateRandomNumber();
-                switchToRound(ROUND.DIGITS);
                 Toast.makeText(context, "Single mode digits started", Toast.LENGTH_SHORT).show();
                 break;
 
@@ -173,7 +172,6 @@ public class Game {
                 resetPlayerAnswer();
                 String numberGuess = guessNumber();
                 opponentAnswer.setText(numberGuess);
-                switchToRound(ROUND.LETTERS);
                 Toast.makeText(context, "Single mode letters started", Toast.LENGTH_SHORT).show();
                 break;
 
@@ -303,21 +301,6 @@ public class Game {
         }
 
         return tPart+vPart;
-    }
-
-    private void switchToRound(ROUND round) {
-        switch (round) {
-            case DIGITS:
-                GameActivity.attachDigitsKeyboard();
-                break;
-
-            case LETTERS:
-                GameActivity.attachLettersKeyboard();
-                break;
-
-            default:
-                break;
-        }
     }
 
     private boolean isValidNumber(int number) {

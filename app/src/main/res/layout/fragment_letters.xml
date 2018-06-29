@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LettersFragment">
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_column="1"
+            android:layout_columnWeight="4"
+            android:layout_margin="@dimen/button_margin"
+            android:layout_row="1"
+            android:layout_rowWeight="1"
+            android:background="@color/tile1"
+            android:gravity="center"
+            android:onClick="letterClicked"
+            android:tag="T"
+            android:text="T" />
+
+        <TextView
+            android:layout_column="1"
+            android:layout_columnWeight="4"
+            android:layout_margin="@dimen/button_margin"
+            android:layout_row="2"
+            android:layout_rowWeight="1"
+            android:background="@color/tile2"
+            android:gravity="center"
+            android:onClick="letterClicked"
+            android:tag="V"
+            android:text="V" />
+
+        <TextView
+            android:id="@+id/lettersBackspace"
+            android:layout_column="5"
+            android:layout_columnSpan="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="@dimen/button_margin"
+            android:layout_row="1"
+            android:layout_rowWeight="1"
+            android:background="@color/backspace"
+            android:gravity="center"
+            android:onClick="lettersBackspaceClicked"
+            android:text="&lt;&lt;" />
+
+        <TextView
+            android:id="@+id/lettersOk"
+            android:layout_column="5"
+            android:layout_columnSpan="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="@dimen/button_margin"
+            android:layout_row="2"
+            android:layout_rowWeight="1"
+            android:background="@color/ok"
+            android:gravity="center"
+            android:onClick="lettersOkClicked"
+            android:text="OK" />
+
+    </GridLayout>
+
+</FrameLayout>
