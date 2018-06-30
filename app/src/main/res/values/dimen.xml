@@ -4,4 +4,5 @@
     <dimen name="button_margin">5dp</dimen>
     <dimen name="text_margin">5dp</dimen>
     <dimen name="separator_margin">5dp</dimen>
+    <dimen name="character_size">30sp</dimen>
 </resources>
