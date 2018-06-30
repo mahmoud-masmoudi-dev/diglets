@@ -9,14 +9,23 @@
         android:roundIcon="@drawable/ic_diglets"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name="com.m_square.diglets.MainActivity">
+        <activity
+            android:name="com.m_square.diglets.MainActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.m_square.diglets.GameActivity"></activity>
+        <activity
+            android:name="com.m_square.diglets.GameActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden">
+
+        </activity>
     </application>
 
 </manifest>
