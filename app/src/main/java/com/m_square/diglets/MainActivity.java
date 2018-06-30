@@ -2,10 +2,10 @@ package com.m_square.diglets;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -21,14 +21,10 @@ public class MainActivity extends AppCompatActivity {
         boolean opponentWon = intent.getBooleanExtra("OPPONENT_WON", false);
 
         if(playerWon) {
-            Snackbar.make(singleModeDigitsButton, "You win ;)", Snackbar.LENGTH_SHORT)
-                    .setAction("Action", null)
-                    .show();
+            Toast.makeText(this, "You win ;)", Toast.LENGTH_SHORT).show();
         }
         if (opponentWon) {
-            Snackbar.make(singleModeDigitsButton, "Opponent wins :(", Snackbar.LENGTH_SHORT)
-                    .setAction("Action", null)
-                    .show();
+            Toast.makeText(this, "Opponent wins :(", Toast.LENGTH_SHORT).show();
         }
 
         singleModeDigitsButton.setOnClickListener(new View.OnClickListener() {
